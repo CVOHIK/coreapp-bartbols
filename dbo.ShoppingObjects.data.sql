@@ -1,0 +1,1 @@
+﻿insert into ShoppingObjects ( ShoppingCartId, ProductQnt, ProductId) values (1,1,1);

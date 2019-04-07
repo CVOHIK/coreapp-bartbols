@@ -1,0 +1,26 @@
+﻿@model WebApplicationShop.Models.Category
+
+@{
+    ViewBag.Title = "Browse";
+}
+    <div>
+        <h3>Browsing @Model.CategoryName</h3>
+
+        <p>Select from @Model.Products.Count products:</p>
+        <ul>
+
+            @foreach (var _product in Model.Products)
+            {
+                <li>
+                    @Html.ActionLink(_product.PublicName, "Details", new { _id = _product.ProductId })
+                </li>
+            }
+        </ul>
+    </div>
+    <p>
+        @Html.ActionLink("Back to Shop", "Index") |
+        @Html.ActionLink("Go to Cart", "Index", "ShoppingCart")
+    </p>
+
+
+

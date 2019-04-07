@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebApplicationShop.Models.ShoppingCartViewModel>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CartTotal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CartTotal)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ShoppingCartViewModelId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ShoppingCartViewModelId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ShoppingCartViewModelId })
+        </td>
+    </tr>
+}
+
+</table>

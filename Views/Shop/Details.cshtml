@@ -1,0 +1,41 @@
+﻿@model WebApplicationShop.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h3>@Model.PublicName</h3>
+
+    <dl class="dl-horizontal">
+
+        <dt>
+            Price:
+        </dt>
+        <dd>
+            € @Html.DisplayFor(model => model.BasePrice)
+        </dd>
+        <dt>
+            BulkPrice:
+        </dt>
+        <dd>
+            € @Html.DisplayFor(model => model.BulkPrice) (buy more then @Html.DisplayFor(model => model.BulkQnt) for bulk price)
+        </dd>
+        <dt>
+            Description:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+
+<p class="button">
+    @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.ProductId }, "")
+</p>
+
+<p>
+    @Html.ActionLink("Back to Shop", "Index") |
+    @Html.ActionLink("Back to " + Model.Category.CategoryName, "Browse", new { _shopCategory = Model.Category.CategoryName }) |
+    @Html.ActionLink("Go to Cart", "Index", "ShoppingCart")
+</p>

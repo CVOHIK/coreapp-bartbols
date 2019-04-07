@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@model IEnumerable<WebApplicationShop.Models.Category>
+
+@{
+    ViewBag.Title = "Store";
+}
+    <div>
+        <h3>Browse Categories</h3>
+
+        <p>Select from @Model.Count() categories:</p>
+        <ul>
+            @foreach (var _shopCategory in Model)
+            {
+                <li>@Html.ActionLink(_shopCategory.CategoryName, "Browse", new { _shopCategory = _shopCategory.CategoryName })</li>
+            }
+        </ul>
+    </div>
+    <p>
+        @Html.ActionLink("Back to Shop", "Index") |
+        @Html.ActionLink("Go to Cart", "Index", "ShoppingCart")
+    </p>

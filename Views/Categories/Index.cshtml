@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebApplicationShop.Models.Category>
+
+@helper Truncate(String input, int length)
+{
+    if (input != null)
+    {
+        if (input.Length <= length)
+        {@input}
+    else
+    {@input.Substring(0, length)<text>...</text>}
+}
+}
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Manage products and categories</h2>
+
+<p>
+    @Html.ActionLink("Add Category", "Create") |
+    @Html.ActionLink("Manage Products", "Index", "Products")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Truncate(item.Description, 25)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CategoryId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
+            </td>
+        </tr>
+    }
+
+</table>
